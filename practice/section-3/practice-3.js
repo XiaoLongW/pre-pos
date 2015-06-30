@@ -1,24 +1,19 @@
 function create_updated_collection(collection_a, object_b) {
     var result=[];
-    var length_l=collection_a.length;
-    var i=0;
-    var j=0;
   
-    for(i=0;i<length_l;i++){
+    for(var x=0;x<collection_a.length;x++){
         var counts=1;
-        var attr=collection_a[i];
-        while(collection_a[i+1]==attr){
+        while(collection_a[x+1]==collection_a[x]){
        	    counts++;
-       	    i++;
+       	    x++;
         }
-        result.push({key:attr,count:counts});
+        result.push({key:collection_a[x],count:counts});
     }
   
-    for(i=0;i<result.length;i++){
-       for(j=0;j<object_b["value"].length;j++){
-       	    if(result[i]["key"]==object_b["value"][j]){
-       	   	   	var num=Math.floor((result[i]["count"])/3);
-       	   	    result[i]["count"]-=num;
+    for(var x=0;x<result.length;x++){
+       for(var y=0;y<object_b["value"].length;y++){
+       	    if(result[x]["key"]==object_b["value"][y]){
+       	   	    result[x]["count"]-=Math.floor((result[x]["count"])/3);
        	    }
        }
     }
