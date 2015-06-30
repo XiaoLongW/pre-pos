@@ -7,15 +7,17 @@ function create_updated_collection(collection_a, object_b) {
        	    counts++;
        	    x++;
         }
+
+        for(var y=0;y<object_b["value"].length;y++){
+            if(collection_a[x]==object_b["value"][y]){
+                var num=0;
+                for(var z=0;z+3<=counts;z+=3){
+                  num++;
+                }
+                counts-=num;
+            }
+        }
         result.push({key:collection_a[x],count:counts});
-    }
-  
-    for(var x=0;x<result.length;x++){
-       for(var y=0;y<object_b["value"].length;y++){
-       	    if(result[x]["key"]==object_b["value"][y]){
-       	   	    result[x]["count"]-=Math.floor((result[x]["count"])/3);
-       	    }
-       }
     }
     return result;
 }
