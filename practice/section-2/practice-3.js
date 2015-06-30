@@ -1,27 +1,30 @@
 function count_same_elements(collection) {
     var result=[];
-    var attr='';
+
     for( var i=0;i<collection.length;i++){
-      var counts=0;
-      attr=collection[i].length>1?collection[i][0]:collection[i];
-      var l=collection[i].length;
-      while(collection[i].length>1?collection[i][0]==attr:collection[i]==attr) {
+        var counts=1;
+
         if(collection[i].length==1){
-          counts++;
-          attr=collection[i];
-        }else if(collection.length==5){
-          counts+=((collection[i][2]-0)*10+(collection[i][3]-0));
-          attr=collection[i][0];
+          while(collection[i+1]==collection[i]){
+             counts++;
+             i++;
+          }
+        }else if(collection[i].length>=5){
+          counts=((collection[i][2]*10-0)+(collection[i][3]-0));
         }else{
-          counts+=(collection[i][2]-0);
-          attr=collection[i][0];
+          counts=(collection[i][2]-0);
         }
-        
-        i++;
-        l=collection[i].length;
-      }
-      result.push({key:attr,summary:counts});
-      i--;
+        var bo=true;
+        for(var x=0;x<result.length;x++){
+          if(collection[i][0]==result[x]['name']){
+            result[x]['summary']+=counts;
+            bo=false;
+            break;
+          }
+        }
+        if(bo){
+          result.push({name:collection[i][0],summary:counts});
+        }
     }
     return result;
 }
