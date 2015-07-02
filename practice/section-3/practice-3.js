@@ -1,23 +1,26 @@
 function create_updated_collection(collection_a, object_b) {
-    var result=[];
-  
-    for(var x=0;x<collection_a.length;x++){
-        var counts=1;
-        while(collection_a[x+1]==collection_a[x]){
-       	    counts++;
-       	    x++;
-        }
-
-        for(var y=0;y<object_b["value"].length;y++){
-            if(collection_a[x]==object_b["value"][y]){
-                var num=0;
-                for(var z=0;z+3<=counts;z+=3){
-                  num++;
-                }
-                counts-=num;
-            }
-        }
-        result.push({key:collection_a[x],count:counts});
+  var result = [];
+  for (var x = 0; x < collection_a.length; x++) {
+    inR(collection_a[x], result);
+  }
+  for (var y = 0; y < result.length; y++) {
+    findAndSub(result[y], object_b);
+  }
+  return result;
+}
+function inR(cMember, result) {
+  for (var y = 0; y < result.length; y++) {
+    if (cMember == result[y].key) {
+      result[y].count++;
+      return 0;
     }
-    return result;
+  }
+  result.push({key: cMember, count: 1});
+}
+function findAndSub(rMember, obj_b) {
+  for (var y = 0; y < (obj_b.value).length; y++) {
+    if (rMember.key == (obj_b.value)[y]) {
+      rMember.count -= Math.floor((rMember.count) / 3);
+    }
+  }
 }
