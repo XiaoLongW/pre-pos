@@ -2,7 +2,7 @@ function collect_same_elements(collection_a, object_b) {
   var result = [];
 
   for (var x = 0; x < collection_a.length; x++) {
-    findInB(result, collection_a[x].key, object_b)
+    findInB(result, collection_a[x].key, object_b);
   }
   return result;
 }

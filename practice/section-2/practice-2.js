@@ -1,23 +1,16 @@
 function count_same_elements(collection) {
   var result = [];
-
-  for (var i = 0; i < collection.length; i++) {
-    if (!inR(collection[i], result)) {
-      if (collection[i].length != 1) {
-        result.push({key: collection[i][0], count: parseInt(collection[i][2])});
-      } else {
-        result.push({key: collection[i], count: 1});
-      }
-    }
+  for (var x = 0; x < collection.length; x++) {
+    inR(collection[x], result);
   }
   return result;
 }
 function inR(cMember, result) {
   for (var y = 0; y < result.length; y++) {
-    if (cMember == result[y].key) {
-      result[y].count++;
-      return true;
+    if (cMember[0] == result[y].key) {
+      result[y].count += cMember.length == 1 ? 1 : parseInt(cMember[2]);
+      return;
     }
   }
-  return false;
+  result.push({key: cMember[0], count: cMember.length == 1 ? 1 : parseInt(cMember[2])});
 }
