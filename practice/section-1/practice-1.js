@@ -6,10 +6,10 @@ function collect_same_elements(collection_a, collection_b) {
   return result;
 }
 
-function findInB(result, aValue, col_b) {
-  for (var y = 0; y < col_b.length; y++) {
-    if (aValue == col_b[y]) {
-      result.push(aValue);
+function findInB(bePushed, beFound, searchIn) {
+  for (var y = 0; y < searchIn.length; y++) {
+    if (beFound == searchIn[y]) {
+      bePushed.push(beFound);
       break;
     }
   }

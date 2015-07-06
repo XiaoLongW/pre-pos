@@ -4,10 +4,10 @@ function create_updated_collection(collection_a, object_b) {
   }
   return collection_a;
 }
-function findInB(aMember, obj_b) {
-  for (var y = 0; y < (obj_b.value).length; y++) {
-    if (aMember.key == (obj_b.value)[y]) {
-      aMember.count--;
+function findInB(beFound, searchIn) {
+  for (var y = 0; y < (searchIn.value).length; y++) {
+    if (beFound.key == (searchIn.value)[y]) {
+      beFound.count--;
       return;
     }
   }

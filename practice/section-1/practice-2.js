@@ -5,10 +5,10 @@ function collect_same_elements(collection_a, collection_b) {
   }
   return result;
 }
-function findInB(result, aValue, col_b) {
-  for (var y = 0; y < col_b[0].length; y++) {
-    if (aValue == col_b[0][y]) {
-      result.push(aValue);
+function findInB(bePushed, beFound, searchIn) {
+  for (var y = 0; y < searchIn[0].length; y++) {
+    if (beFound == searchIn[0][y]) {
+      bePushed.push(beFound);
       break;
     }
   }
